@@ -18,6 +18,29 @@ const TodoList = () => {
         setTodos((prevTodo)=>todos.filter((prevTodo)=>prevTodo.id!== id));
 
     };
+    let updateUpperCase=()=>{
+        setTodos((prevtodos)=>
+            prevtodos.map((todo)=>{
+                return{
+                ...todo,task:todo.task.toUpperCase(),
+    };
+})
+);
+    };
+
+    let updateElementOne=(id)=>{
+        setTodos((prevtodos)=>
+            prevtodos.map((todo)=>{
+                if(todo.id==id){
+                return{
+                ...todo,task:todo.task.toUpperCase(),
+    };
+}else{
+    return todo;
+}
+})
+);
+    };
   return (
     <div>
         <input placeholder='Add tasks' value={newTodo} onChange={updateTodoValue} ></input>
@@ -33,10 +56,14 @@ const TodoList = () => {
                 <span>{todo.task}</span>
                 &nbsp; &nbsp; &nbsp;
                 <button onClick={()=>{deleteElement(todo.id)}}>Delete</button>
+                &nbsp; &nbsp;
+                <button onClick={()=>{updateElementOne(todo.id)}}>UPPERCASE</button>
             </li>
         ))
     }
         </ul>
+        <br></br><br></br>
+        <button onClick={updateUpperCase}>TOUPPERCASE</button>
     </div>
   );
 }
