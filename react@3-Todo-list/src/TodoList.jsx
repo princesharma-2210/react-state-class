@@ -72,7 +72,7 @@ const TodoList = () => {
         <button onClick={addNewElement}>ADD</button>
         <br></br><br></br>
         <hr></hr><br></br>
-        <h4>Tasks Todo</h4>
+        <h4 className='text-3xl font-bold underline'>Tasks Todo</h4>
         <br></br>
         <ul>
         {
