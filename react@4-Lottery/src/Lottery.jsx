@@ -1,10 +1,11 @@
 import {useState} from 'react'
 import {genTicket,sum} from './helper.js'
 import Ticket from './Ticket.jsx';
+import {Button} from './Button.jsx'
 
-const Lottery = ({n=3,WinningSum=15}) => {
+const Lottery = ({n=3,WinCondition}) => {
     let [ticket ,setTicket]= useState(genTicket(n));
-    let isWinning = sum(ticket)===WinningSum;
+    let isWinning = WinCondition(ticket);
     let buyTicket= ()=>{
         setTicket(genTicket(n));
     }
@@ -15,7 +16,7 @@ const Lottery = ({n=3,WinningSum=15}) => {
       <div className=' mt-4 '>
       <Ticket ticket={ticket}/>
       </div>
-      <button className='mt-4' onClick={buyTicket}>BuyTicket</button>
+      <Button action={buyTicket}/>
       <h3 className='mt-4'>{isWinning && "congratulations! you win"}</h3>
     </div>
   )
